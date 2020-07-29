@@ -1,6 +1,6 @@
 package lambda;
 
-public class LambdaExapmle {
+public class LambdaExapmle1 {
 
     public static void main(String[] args) {
         // лямбда-оператор  ->
