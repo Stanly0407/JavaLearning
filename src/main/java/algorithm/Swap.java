@@ -1,13 +1,20 @@
 package algorithm;
 
+
+import org.w3c.dom.ls.LSOutput;
+
+import java.time.LocalDate;
+import java.time.Month;
+
 public class Swap {
 
     // Метод swap
     // Часто в процессе решения той или иной задачи, две переменные должны обменяться значениями.
     // Есть два варианта реализации обмена значениями:
 
-
     public static void main(String[] args) {
+
+
 
         //Вариант 1: обмен значениями с использованием временной переменной
         //Вводим временную переменную, которая на время придержит значение из одной переменной:
@@ -36,6 +43,9 @@ public class Swap {
 
 
 
+
+
+
     }
 
 
@@ -43,4 +53,30 @@ public class Swap {
 
 
 
+
+
+
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

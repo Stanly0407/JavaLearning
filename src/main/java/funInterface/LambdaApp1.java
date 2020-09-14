@@ -1,5 +1,10 @@
 package funInterface;
 
+import java.time.LocalDate;
+import java.time.Period;
+import java.time.format.DateTimeFormatter;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Scanner;
 import java.util.function.Supplier;
 
@@ -14,6 +19,7 @@ public class LambdaApp1 {
     // В частности, ряд далее рассматриваемых интерфейсов широко применяется в Stream API - новом прикладном интерфейсе для работы с данными.
 
     public static void main(String[] args) {
+
 
         // 1. Predicate<T>  (англ.) - логическое условие
         // Функциональный интерфейс Predicate<T> проверяет соблюдение некоторого условия. Если оно соблюдается, то возвращается значение true.
