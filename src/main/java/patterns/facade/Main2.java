@@ -1,6 +1,6 @@
 package patterns.facade;
 
-public class Main {
+public class Main2 {
 
     //4.
 
