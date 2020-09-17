@@ -2,7 +2,7 @@ package patterns.facade;
 
 public class Main2 {
 
-    //4.
+    //5.
 
     public static void main(String... args){
         GPSPower power = new GPSPower();

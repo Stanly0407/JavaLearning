@@ -8,7 +8,7 @@ public class Main {
         DirectorCar dirCar1 = DirectorCar.getInstance(); // получили объект одиночку в другую переменную
         System.out.println(dirCar1.getArmor()); // вывели ее на печать, но печатает тот же объект, но с изменнным ранее полем
         System.out.println(dirCar.getArmor());  // для примера снова напечатаю об этом объекте через первую переменную
-    }
+   }
 
 
 }
