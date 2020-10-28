@@ -8,7 +8,6 @@ public class MultiEx4 {
     // !!!! Для этого надо применить метод join().
     // В этом случае текущий поток будет ожидать завершения потока, для которого вызван метод join:
 
-
     public static void main(String[] args) {
 
         System.out.println("Main thread started...");

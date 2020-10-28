@@ -25,15 +25,17 @@ public class GPSInterface {
 который будет за водителя выполнять однотипные действия:
      */
 
-    private GPSPower power;
-    private GPSNotifier notifier;
-    private RoadAdvisor advisor;
+    // как вариант не через конструктор это проинициазировать поля - создать экземпляры
 
-    public GPSInterface(GPSPower power, GPSNotifier notifier, RoadAdvisor advisor){
-        this.power = power;
-        this.notifier = notifier;
-        this.advisor = advisor;
-    }
+    private GPSPower power = new GPSPower();
+    private GPSNotifier notifier = new GPSNotifier();
+    private RoadAdvisor advisor = new RoadAdvisor();
+
+//    public GPSInterface(GPSPower power, GPSNotifier notifier, RoadAdvisor advisor){
+//        this.power = power;
+//        this.notifier = notifier;
+//        this.advisor = advisor;
+//    }
 
     public void activate(){
         power.powerOn();
