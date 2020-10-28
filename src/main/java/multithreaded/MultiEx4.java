@@ -17,7 +17,6 @@ public class MultiEx4 {
             t.join();
         }
         catch(InterruptedException e){
-
             System.out.printf("%s has been interrupted", t.getName());
         }
         System.out.println("Main thread finished...");
