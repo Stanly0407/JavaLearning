@@ -6,13 +6,13 @@ import java.util.concurrent.Semaphore;
 // задача — накормить всех философов. Никто из них не должен остаться голодным, и при этом они не должны «заблокировать» друг друга при попытке сесть за стол
 // (мы должны избежать deadlock).
 
-public class SemaphEx extends Thread { // Philosopher
+public class SemaphEx1 extends Thread { // Philosopher
 
     private Semaphore sem;
     private boolean full = false; // поел ли философ
     private String name;
 
-    SemaphEx(Semaphore sem, String name) {
+    SemaphEx1(Semaphore sem, String name) {
         this.sem=sem;
         this.name=name;
     }
@@ -26,7 +26,7 @@ public class SemaphEx extends Thread { // Philosopher
                 sleep(300); // философ ест
                 full = true;
                 System.out.println (name + " поел! Он выходит из-за стола");
-                sem.release();
+                sem.release(); // Метод release() «освобождает» выданное ранее разрешение и возвращает его в счетчик (увеличивает счетчик разрешений семафора на 1).
                 sleep(300); // философ ушел, освободив место другим
             }
         }
@@ -36,11 +36,12 @@ public class SemaphEx extends Thread { // Philosopher
     }
     public static void main(String[] args) {
 
-        Semaphore sem = new Semaphore(2);
-        new SemaphEx(sem,"Сократ").start();
-        new SemaphEx(sem,"Платон").start();
-        new SemaphEx(sem,"Аристотель").start();
-        new SemaphEx(sem,"Фалес").start();
-        new SemaphEx(sem,"Пифагор").start();
+        Semaphore sem = new Semaphore(2, true); //параметр справедливости fair: усли true, то разрешения будут предоставляться
+        // ожидающим потокам исполнения в том порядке, в каком они его запрашивали.
+        new SemaphEx1(sem,"Сократ").start();
+        new SemaphEx1(sem,"Платон").start();
+        new SemaphEx1(sem,"Аристотель").start();
+        new SemaphEx1(sem,"Фалес").start();
+        new SemaphEx1(sem,"Пифагор").start();
     }
 }
