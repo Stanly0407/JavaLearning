@@ -6,6 +6,8 @@ import java.util.concurrent.CountDownLatch;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
+//http://java-online.ru/concurrent-executor.xhtml
+
 public class ExecutorServEx1 {
 
     SimpleDateFormat sdf = null;
@@ -14,7 +16,7 @@ public class ExecutorServEx1 {
     ExecutorServEx1() {
         sdf = new SimpleDateFormat("HH:mm:ss.S");
 
-        CountDownLatch cdl1 = new CountDownLatch(COUNT);
+        CountDownLatch cdl1 = new CountDownLatch(COUNT); // count- количество раз, которое countDown() необходимо вызвать, прежде чем потоки смогут пройти await()
         CountDownLatch cdl2 = new CountDownLatch(COUNT);
         CountDownLatch cdl3 = new CountDownLatch(COUNT);
         CountDownLatch cdl4 = new CountDownLatch(COUNT);
@@ -34,6 +36,7 @@ public class ExecutorServEx1 {
             cdl3.await();
             cdl4.await();
         } catch (InterruptedException exc) {
+            System.out.println("InterruptedException");
         }
 
         executor.shutdown();
@@ -41,35 +44,37 @@ public class ExecutorServEx1 {
     }
 
     //-------------------------------------------------
-    void printMessage(final String templ) {
+    private void printMessage(final String templ) {
         String text = sdf.format(new Date()) + " : " + templ;
         System.out.println(text);
     }
+
     //-------------------------------------------------
     class MyThread implements Runnable {
 
         String name;
         CountDownLatch latch;
+
         MyThread(CountDownLatch c, String n) {
             latch = c;
             name = n;
             new Thread(this);
         }
 
-        public void run()
-        {
+        public void run() {
             try {
-                for(int i = 0; i < COUNT; i++) {
+                for (int i = 0; i < COUNT; i++) {
                     printMessage(name + " - " + i);
-                    latch.countDown();
-                    Thread.sleep((long)(Math.random()*1500));
+                    latch.countDown(); //Уменьшает счетчик защелки, освобождая все ожидающие потоки, если счетчик достигает нуля.
+                    Thread.sleep((long) (Math.random() * 1500));
                 }
                 printMessage(name + " completed");
-            } catch (InterruptedException e) {}
+            } catch (InterruptedException e) {
+            }
         }
     }
-    public static void main(String args[])
-    {
+
+    public static void main(String args[]) {
         new ExecutorServEx1();
     }
 }
