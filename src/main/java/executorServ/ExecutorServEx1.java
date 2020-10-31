@@ -22,9 +22,10 @@ public class ExecutorServEx1 {
         CountDownLatch cdl4 = new CountDownLatch(COUNT);
 
         ExecutorService executor;
-        executor = Executors.newFixedThreadPool(2);
+        executor = Executors.newFixedThreadPool(2); //фиксированный пул из двух потоков исполнения executor!!!
+//newFixedThreadPool Создает пул потоков, который повторно использует фиксированное количество потоков, работающих в общей неограниченной очереди.
 
-        System.out.println("Запуск потоков");
+        System.out.println("Запуск потоков:");
         executor.execute(new MyThread(cdl1, "Thread.1"));
         executor.execute(new MyThread(cdl2, "Thread.2"));
         executor.execute(new MyThread(cdl3, "Thread.3"));
