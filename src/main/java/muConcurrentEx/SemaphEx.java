@@ -21,15 +21,13 @@ public class SemaphEx extends Thread { // Philosopher
         try{
             if (!full) { // если философ еще не ел
                 // Запрашиваем у семафора разрешение на выполнение
-                sem.acquire();
+                sem.acquire(); //запрашивает разрешение на доступ к ресурсу у семафора. Если счетчик > 0, разрешение предоставляется, а счетчик уменьшается на 1.
                 System.out.println (name + " садится за стол");
-                // философ ест
-                sleep(300);
+                sleep(300); // философ ест
                 full = true;
                 System.out.println (name + " поел! Он выходит из-за стола");
                 sem.release();
-                // философ ушел, освободив место другим
-                sleep(300);
+                sleep(300); // философ ушел, освободив место другим
             }
         }
         catch(InterruptedException e) {
@@ -38,7 +36,7 @@ public class SemaphEx extends Thread { // Philosopher
     }
     public static void main(String[] args) {
 
-        Semaphore sem = new Semaphore(3);
+        Semaphore sem = new Semaphore(2);
         new SemaphEx(sem,"Сократ").start();
         new SemaphEx(sem,"Платон").start();
         new SemaphEx(sem,"Аристотель").start();
