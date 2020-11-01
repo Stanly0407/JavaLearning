@@ -20,37 +20,28 @@ public class SemaphEx2 {
         private int riderNum;
 
         public Rider(int ruderNum) {
-
             this.riderNum = ruderNum;
         }
 
         @Override
         public void run() {
-            System.out.printf(
-                    "Всадник %d подошел к зоне контроля\n",
-                    riderNum);
+            System.out.printf("Всадник %d подошел к зоне контроля\n", riderNum);
             try {
-                // Запрос разрешения
-                SEMAPHORE.acquire();
-                System.out.printf("\tвсадник %d проверяет наличие" +
-                        "свободного контроллера\n", riderNum);
+                SEMAPHORE.acquire(); // Запрос разрешения на доступ к ресурсу у семаформа
+                System.out.printf("\tвсадник %d проверяет наличие свободного контроллера\n", riderNum);
                 int controlNum = -1;
-                // Ищем свободное место и
-                // подходим к контроллеру
+                // Ищем свободное место и подходим к контроллеру
                 synchronized (CONTROL_PLACES) {
-                    for (int i = 0;
-                         i < COUNT_CONTROL_PLACES; i++)
-                        // Есть ли свободные контроллеры?
-                        if (CONTROL_PLACES[i]) {
+                    for (int i = 0; i < COUNT_CONTROL_PLACES; i++)
+                        if (CONTROL_PLACES[i]) { // Есть ли свободные контроллеры?
                             // Занимаем место
                             CONTROL_PLACES[i] = false;
                             controlNum = i;
-                            System.out.printf("\t\tвсадник %d подошел к контроллеру % d.\n",
+                            System.out.printf("\t\tвсадник %d подошел к контроллеру %d.\n",
                                     riderNum, i);
                             break;
                         }
                 }
-
                 // Время проверки лошади и всадника
                 Thread.sleep((int)
                         (Math.random() * 10 + 1) * 1000);
@@ -59,30 +50,24 @@ public class SemaphEx2 {
                 synchronized (CONTROL_PLACES) {
                     CONTROL_PLACES[controlNum] = true;
                 }
-
                 // Освобождение ресурса
                 SEMAPHORE.release();
-                System.out.printf(
-                        "Всадник %d завершил проверку\n",
-                        riderNum);
+                System.out.printf("Всадник %d завершил проверку\n", riderNum);
             } catch (InterruptedException e) {
+                System.out.println("Что-то пошло не так!");
             }
         }
     }
 
-    public static void main(String[] args)
-            throws InterruptedException {
+    public static void main(String[] args) throws InterruptedException {
         // Определяем количество мест контроля
         CONTROL_PLACES = new boolean[COUNT_CONTROL_PLACES];
         // Флаги мест контроля [true-свободно,false-занято]
         for (int i = 0; i < COUNT_CONTROL_PLACES; i++)
             CONTROL_PLACES[i] = true;
-        /*
-         *  Определяем семафор со следующими параметрами :
-         *  - количество разрешений 5
-         *  - флаг очередности fair=true (очередь
-         *                             first_in-first_out)
-         */
+        /*  Определяем семафор со следующими параметрами :
+           - количество разрешений 5
+           - флаг очередности fair=true (очередь first_in-first_out) */
         SEMAPHORE = new Semaphore(CONTROL_PLACES.length,
                 true);
 
@@ -91,6 +76,4 @@ public class SemaphEx2 {
             Thread.sleep(400);
         }
     }
-
-
 }
