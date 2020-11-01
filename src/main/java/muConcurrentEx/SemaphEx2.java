@@ -17,22 +17,23 @@ public class SemaphEx2 {
     private static Semaphore SEMAPHORE = null;
 
     public static class Rider implements Runnable {
-        private int ruderNum;
+        private int riderNum;
 
         public Rider(int ruderNum) {
-            this.ruderNum = ruderNum;
+
+            this.riderNum = ruderNum;
         }
 
         @Override
         public void run() {
             System.out.printf(
                     "Всадник %d подошел к зоне контроля\n",
-                    ruderNum);
+                    riderNum);
             try {
                 // Запрос разрешения
                 SEMAPHORE.acquire();
                 System.out.printf("\tвсадник %d проверяет наличие" +
-                        "свободного контроллера\n", ruderNum);
+                        "свободного контроллера\n", riderNum);
                 int controlNum = -1;
                 // Ищем свободное место и
                 // подходим к контроллеру
@@ -45,7 +46,7 @@ public class SemaphEx2 {
                             CONTROL_PLACES[i] = false;
                             controlNum = i;
                             System.out.printf("\t\tвсадник %d подошел к контроллеру % d.\n",
-                                    ruderNum, i);
+                                    riderNum, i);
                             break;
                         }
                 }
@@ -63,7 +64,7 @@ public class SemaphEx2 {
                 SEMAPHORE.release();
                 System.out.printf(
                         "Всадник %d завершил проверку\n",
-                        ruderNum);
+                        riderNum);
             } catch (InterruptedException e) {
             }
         }
