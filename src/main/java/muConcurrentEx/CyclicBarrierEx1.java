@@ -20,9 +20,7 @@ public class CyclicBarrierEx1 {
                 System.out.println("\nЗагрузка автомобилей");
                 Thread.sleep(500);
                 System.out.println("Паром переправил автомобили\n");
-            } catch (InterruptedException e) {
-                System.out.println ("Что-то пошло не так!");
-            }
+            } catch (InterruptedException e) {}
         }
     }
 
@@ -41,9 +39,7 @@ public class CyclicBarrierEx1 {
                 System.out.printf("К переправе подъехал автомобиль %d\n", carNumber);
                 // Вызов метода await при подходе к барьеру; поток блокируется в ожидании прихода остальных потоков
                 FerryBarrier.await();
-                System.out.printf(
-                        "Автомобиль %d продолжил движение\n",
-                        carNumber);
+                System.out.printf("Автомобиль %d продолжил движение\n", carNumber);
             } catch (Exception e) {}
         }
     }
@@ -52,7 +48,7 @@ public class CyclicBarrierEx1 {
         FerryBarrier = new CyclicBarrier(FerryBoat_size, new FerryBoat()); // На вход еще и запуск!
 
         for (int i = 1; i < 10; i++) { //10 т.к. кол-во авто 9 шт.
-            new Thread(new Car(i)).start();
+            new Thread(new Car(i)).start(); //заупск run в классе car
             Thread.sleep(400);
         }
     }
