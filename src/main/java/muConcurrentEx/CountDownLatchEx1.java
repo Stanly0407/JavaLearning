@@ -34,12 +34,12 @@ public class CountDownLatchEx1 {
         }
     }
     public static Rider createRider(final int number) {
-        return new Rider(number, (int)
-                (Math.random() * 10 + 5));
+        return new Rider(number,
+                (int) (Math.random() * 10 + 5)); // случайным образом определяем скорость всадника
     }
 
     public static void main(String[] args) throws InterruptedException {
-        LATCH = new CountDownLatch(RIDERS_COUNT + 3);// Определение объекта синхронизации
+        LATCH = new CountDownLatch(RIDERS_COUNT + 3);// Определение объекта синхронизации (8)
         // Создание потоков всадников
         for (int i = 1; i <= RIDERS_COUNT; i++) {
             new Thread (createRider(i)).start();
@@ -60,6 +60,6 @@ public class CountDownLatchEx1 {
         LATCH.countDown(); // Уменьшаем счетчик на 1
 
         // Счетчик обнулен, и все ожидающие этого события потоки разблокированы
-        System.out.println("Счетчик обнулен");
+        System.out.println("Счетчик обнулен, Всадники статовали и идут к финишу");
     }
 }
