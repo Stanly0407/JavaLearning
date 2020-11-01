@@ -16,7 +16,8 @@ public class ExecutorServEx1 {
     ExecutorServEx1() {
         sdf = new SimpleDateFormat("HH:mm:ss.S");
 
-        CountDownLatch cdl1 = new CountDownLatch(COUNT); // count- количество раз, которое countDown() необходимо вызвать, прежде чем потоки смогут пройти await()
+        CountDownLatch cdl1 = new CountDownLatch(COUNT); // count- количество раз, которое countDown() необходимо вызвать,
+                                                         // прежде чем потоки смогут пройти await()
         CountDownLatch cdl2 = new CountDownLatch(COUNT);
         CountDownLatch cdl3 = new CountDownLatch(COUNT);
         CountDownLatch cdl4 = new CountDownLatch(COUNT);
