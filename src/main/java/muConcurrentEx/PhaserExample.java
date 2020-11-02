@@ -62,7 +62,7 @@ public class PhaserExample {
 
     public static void main(String[] args) throws InterruptedException {
         // Регистрация объекта синхронизации
-        PHASER = new Phaser(1); // 1 - количество участников
+        PHASER = new Phaser(1); // 1 - количество участников - один поезд метро
 
         ArrayList<Passenger> passengers = new ArrayList<>();
         // Формирование массива пассажиров
@@ -102,7 +102,8 @@ public class PhaserExample {
                         }
                     System.out.println(OPEN);
                     // Phaser ожидает завершения фазы всеми участниками
-                    PHASER.arriveAndAwaitAdvance();
+                    PHASER.arriveAndAwaitAdvance(); //Метод вызывается потоком/участником, чтобы указать, что он завершил текущую фазу.
+                    // Это аналог метода CyclicBarrier.await(), сообщающего о прибытии к барьеру.
                     System.out.println(CLOSE);
             }
         }
