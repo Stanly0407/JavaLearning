@@ -1,4 +1,6 @@
-package muConcurrentEx;
+package muConcurrentEx.atomiс;
+
+import muConcurrentEx.atomiс.SequenceGenerator;
 
 import java.math.BigInteger;
 import java.util.ArrayList;

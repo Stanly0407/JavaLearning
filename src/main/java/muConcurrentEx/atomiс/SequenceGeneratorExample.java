@@ -1,4 +1,7 @@
-package muConcurrentEx;
+package muConcurrentEx.atomiс;
+
+import muConcurrentEx.atomiс.Sequence;
+import muConcurrentEx.atomiс.SequenceGenerator;
 
 import java.util.ArrayList;
 import java.util.List;
