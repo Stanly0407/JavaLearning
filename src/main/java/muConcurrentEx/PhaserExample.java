@@ -3,14 +3,57 @@ package muConcurrentEx;
 import java.util.ArrayList;
 import java.util.concurrent.Phaser;
 
+// В примере PhaserExample создается несколько потоков, играющих роль пассажиров.
+// Phaser играет роль метро, которое должно проследовать вдоль нескольких станций.
+// Каждая станция (фаза) имеет свой номер. Класс Passenger играет роль пассажира,
+// который на одной из станции должен зайти в вагон, а на другой выйти.
+// Количество пассажиров, а также их места посадки и высадки, формируются случайным образом.
 public class PhaserExample {
     private static Phaser PHASER;
-
     private static String OPEN = "     открытие дверей ";
     private static String CLOSE = "     закрытие дверей ";
 
-    public static void main(String[] args)
-            throws InterruptedException {
+    public static class Passenger implements Runnable {
+        private static String WAIT = " ждёт на станции ";
+        private static String ENTER = " вошел в вагон";
+        private static String EXIT = " вышел из вагона ";
+        private static String SPACE = "    ";
+
+        int id;
+        int departure;
+        int destination;
+
+        public Passenger(int id, int departure, int destination) {
+            this.id = id;
+            this.departure = departure;
+            this.destination = destination;
+            System.out.println(this + WAIT + departure);
+        }
+
+        @Override
+        public void run() {
+            try {
+                System.out.println(SPACE + this + ENTER);
+                //-----------------------------------------------
+                // Заявляем об участии и ждем станции назначения
+                while (PHASER.getPhase() < destination)
+                    PHASER.arriveAndAwaitAdvance();
+                //----------------------------------------------
+                Thread.sleep(500);
+                System.out.println(SPACE + this + EXIT);
+                // Отмена регистрации
+                PHASER.arriveAndDeregister();
+            } catch (InterruptedException e) {
+            }
+        }
+
+        @Override
+        public String toString() {
+            return "Пассажир " + id + " {" + departure + " -> " + destination + '}';
+        }
+    }
+
+    public static void main(String[] args) throws InterruptedException {
         // Регистрация объекта синхронизации
         PHASER = new Phaser(1);
 
