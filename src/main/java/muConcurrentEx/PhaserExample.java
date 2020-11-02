@@ -37,6 +37,13 @@ public class PhaserExample {
                 //-----------------------------------------------
                 // Заявляем об участии и ждем станции назначения
                 while (PHASER.getPhase() < destination)
+                // Как только Phaser переходит в определенную фазу, номер которой соответствует станции посадки пассажира,
+                // то поток данного Passenger стартует (run) и выводит в консоль сообщение, что пассажир вошел в вагон,
+                // т.е. находится в ожидании следующей станции/фазы (arriveAndAwaitAdvance).
+                // Если следующая станция/фаза не будет соответствовать станции назначения, то Passenger продолжит свой путь.
+                // Как только Phaser перейдет в фазу, номер которой соответствует номеру станции назначания пассажира,
+                // то цикл контроля завершится и поток продолжит работу.
+                // С задержкой в 500 ms он сообщит, что покинул вагон и отменит регистрацию в Phaser (arriveAndDeregister).
                     PHASER.arriveAndAwaitAdvance();
                 //----------------------------------------------
                 Thread.sleep(500);
@@ -55,10 +62,9 @@ public class PhaserExample {
 
     public static void main(String[] args) throws InterruptedException {
         // Регистрация объекта синхронизации
-        PHASER = new Phaser(1);
+        PHASER = new Phaser(1); // 1 - количество участников
 
-        ArrayList<Passenger> passengers;
-        passengers = new ArrayList<>();
+        ArrayList<Passenger> passengers = new ArrayList<>();
         // Формирование массива пассажиров
         for (int i = 1; i < 5; i++) {
             if ((int) (Math.random() * 2) > 0)
