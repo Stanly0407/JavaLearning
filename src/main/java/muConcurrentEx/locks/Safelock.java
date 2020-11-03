@@ -61,7 +61,7 @@ public class Safelock {
             System.out.format("%s: %s has bowed back to me!%n", this.name, bower.getName());
         }
     }
-
+ //-------------------------------------------------------------------------------
     static class BowLoop implements Runnable {
         private Friend bower;
         private Friend bowee;
