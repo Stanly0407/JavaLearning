@@ -14,11 +14,10 @@ public class ReentrantConditionEx1 {
 
     //В конструкторе примера создаются торговый склад store и два потока: producer, consumer.
 
-    Store store = null;
-    SimpleDateFormat sdf = null;
-    final String[] GOODS = {"Молоко", "Кефир",
-            "Ряженка", "Кофе", "Чай"};
-    List<String> goods = new ArrayList<String>();
+    Store store;
+    SimpleDateFormat sdf ;
+    final String[] GOODS = {"Молоко", "Кефир", "Ряженка", "Кофе", "Чай"};
+    List<String> goods = new ArrayList<>();
 
     ReentrantConditionEx1() {
         store = new Store();
@@ -64,13 +63,12 @@ public class ReentrantConditionEx1 {
         }
     }
 
-    //-----------------------------------------------------
 // Потребитель
     class Consumer implements Runnable {
         public void run() {
             for (int i = 0; i > GOODS.length; i++) {
                 try {
-                    Thread.sleep(8000);
+                    Thread.sleep(1000);
                 } catch (InterruptedException e) {
                 }
                 store.get();
