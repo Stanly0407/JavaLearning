@@ -1,4 +1,4 @@
-package muConcurrentEx;
+package muConcurrentEx.synchronizers;
 
 import java.util.concurrent.CyclicBarrier;
 

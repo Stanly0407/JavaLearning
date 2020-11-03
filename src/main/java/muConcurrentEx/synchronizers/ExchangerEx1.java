@@ -1,4 +1,4 @@
-package muConcurrentEx;
+package muConcurrentEx.synchronizers;
 
 
 // В примере использования объекта синхронизации Exchanger два почтальона из пунктов А и Б

@@ -1,4 +1,4 @@
-package muConcurrentEx;
+package muConcurrentEx.executors;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
