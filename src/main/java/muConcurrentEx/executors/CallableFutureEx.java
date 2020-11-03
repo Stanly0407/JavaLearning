@@ -10,6 +10,13 @@ import java.util.concurrent.*;
 // В примере используется объект executor типа ExecutorService, формирующий пул из трех потоков.
 // Метод submit с параметром Callable возвращает объект Future для каждого из стартуемого потоков.
 
+// Класс CallableClass, реализующий интерфейс Callable, использует объект String в качестве generic'a.
+// Соответственно и каждый объект Future также должен использовать тип объекта String.
+
+//Перед остановкой пула потоков в консоль выводятся наименования потока.
+// Т.е. в примере демонстрируется возможность не прямого обращения к методу call класса,
+// реализующего интерфейс Callable, а косвенно через объект Future, полученного при старте потока.
+
 public class CallableFutureEx {
 
     public CallableFutureEx() {
@@ -20,11 +27,11 @@ public class CallableFutureEx {
         List<Future<String>> futures = new ArrayList<>();
 
         // Создание экземпляра Callable класса
-        Callable<String> callable = new CallableClass();
+        Callable<String> callable = new CallableClass(); //класс ниже
 
         for (int i = 0; i < 3; i++) {
             // Стартуем, возвращаюший результат исполнения в виде объекта Future поток
-            Future<String> future = executor.submit(callable);
+            Future<String> future = executor.submit(callable); //возвращает объект Future для каждого из стартуемого потоков.
             // Добавляем объект Future в список для отображения результат выполнения (получение наименования потока)
             futures.add(future);
         }
