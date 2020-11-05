@@ -1,5 +1,7 @@
 package algorithm.training;
 
+import org.w3c.dom.ls.LSOutput;
+
 import java.util.Scanner;
 
 public class Palindrome {
@@ -13,7 +15,6 @@ public class Palindrome {
         }else{
             System.out.println("Number : " + palindrome + " is not a palindrome");
         }
-
     }
 
     /*
@@ -28,12 +29,12 @@ public class Palindrome {
             reverse = reverse * 10 + remainder;
             palindrome = palindrome / 10;
         }
-
 //если исходное и обратное числа равны, значит, число является палиндромом в Java
         if (number == reverse) {
             return true;
         }
         return false;
+
     }
 
 }
