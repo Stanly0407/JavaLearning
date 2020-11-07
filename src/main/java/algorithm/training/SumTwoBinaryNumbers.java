@@ -2,7 +2,7 @@ package algorithm.training;
 
 import java.util.Scanner;
 
-public class AddTwoBinaryNumbers {
+public class SumTwoBinaryNumbers {
     public static void main(String[] args) {
         long binary1, binary2;
         int i = 0, remainder = 0;
