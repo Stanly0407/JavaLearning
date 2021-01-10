@@ -1,4 +1,4 @@
-package patterns.decorator;
+package patterns.GoF.structural.decorator;
 
 // 3. когда у нас есть основа нашего приложения приступим к созданию классов машин:
 

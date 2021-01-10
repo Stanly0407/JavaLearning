@@ -1,4 +1,4 @@
-package patterns.strategy;
+package patterns.GoF.behavioral.strategy;
 
 public interface Drivable {
      void drive();

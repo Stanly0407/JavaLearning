@@ -1,4 +1,4 @@
-package patterns.singleton;
+package patterns.GoF.creational.singleton;
 
 public class DirectorCar {
     /*Часто в системе могут существовать сущности только в единственном экземпляре,

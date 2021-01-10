@@ -1,4 +1,4 @@
-package patterns.facade;
+package patterns.GoF.structural.facade;
 
 public class GPSInterface {
 

@@ -1,4 +1,4 @@
-package patterns.decorator;
+package patterns.GoF.structural.decorator;
 
 public class Main3 {
     public static void main(String[] args) {

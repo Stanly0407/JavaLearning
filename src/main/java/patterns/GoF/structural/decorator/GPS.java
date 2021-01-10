@@ -1,4 +1,4 @@
-package patterns.decorator;
+package patterns.GoF.structural.decorator;
 
 
 //5.
