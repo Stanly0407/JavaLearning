@@ -14,12 +14,16 @@ public class LambdaExample8 {
         System.out.println(b);          // 6
     }
 
-    private static Operation2 action(int number){
-        switch(number){
-            case 1: return (x, y) -> x + y;
-            case 2: return (x, y) -> x - y;
-            case 3: return (x, y) -> x * y;
-            default: return (x,y) -> 0;
+    private static Operation2 action(int number) {
+        switch (number) {
+            case 1:
+                return (x, y) -> x + y;
+            case 2:
+                return (x, y) -> x - y;
+            case 3:
+                return (x, y) -> x * y;
+            default:
+                return (x, y) -> 0;
         }
     }
 }

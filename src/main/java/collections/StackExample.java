@@ -1,7 +1,5 @@
 package collections;
 
-import org.w3c.dom.ls.LSOutput;
-
 import java.util.Arrays;
 import java.util.List;
 import java.util.ListIterator;
@@ -61,7 +59,7 @@ public class StackExample {
         System.out.println(element5); //4
 
         // удалить все элементы из стека
-       // intStack.clear(); //b or
+        // intStack.clear(); //b or
         intStack.removeAllElements();
         System.out.println(intStack.isEmpty()); // стек пуст
 
@@ -83,9 +81,9 @@ public class StackExample {
         ListIterator<Integer> it = intStack.listIterator();
 
         Stack<Integer> resultt = new Stack<>();
-        while(it.hasNext()) {
+        while (it.hasNext()) {
             resultt.push(it.next());
-            Integer el= resultt.peek();
+            Integer el = resultt.peek();
             System.out.println(el);
         } // т.е. здесь перезаписываем элементы из одного стека в другой и при этом выводим то, что перезаписываем в новый стек
 
@@ -101,6 +99,5 @@ public class StackExample {
         System.out.println(filtered); // 1, 2, 3
 
 
-
-}
+    }
 }

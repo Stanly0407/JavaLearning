@@ -8,7 +8,7 @@ public class LambdaExample5 {
     public static void main(String[] args) {
 
         //Вариант 1
-        Expression func = (n)-> n%2==0;
+        Expression func = n-> n%2==0;
         int[] nums = { 1, 2, 3, 4, 5, 6, 7, 8, 9 };
         System.out.println(sum(nums, func)); // 20
 

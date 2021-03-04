@@ -27,7 +27,7 @@ public class LambdaExample6 {
     }
 
 
-    static boolean isPositive(int n){
+    static boolean isPositive(int n) {
 
         return n > 0;
     }
